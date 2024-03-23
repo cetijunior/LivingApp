@@ -14,6 +14,12 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "fonts": {
+      "./assets/fonts/risque.ttf": "risque",
+      "./assets/fonts/rochester.ttf": "rochester",
+      "./assets/fonts/zeyada.ttf": "rochester",
+      "./assets/fonts/PalatinoLinotype.ttf": "PalatinoLinotype"
+    },
     "ios": {
       "supportsTablet": true
     },
@@ -25,6 +31,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
