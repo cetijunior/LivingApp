@@ -1,21 +1,28 @@
-The App Layout in: 
+The App Layout 
 
-IOS: 
+
 
 [HomeScreen]
 
 ![HomeScreen IOS](https://github.com/cetijunior/LivingApp/assets/78642663/484776d0-342b-413d-b97b-7027e9b65bb6)
+
+![HomeScreen Android](https://github.com/cetijunior/LivingApp/assets/78642663/6e01122a-5e9c-4468-bab5-fb484b4809bd)
+
 
 
 [Login]
 
 ![Login IOS](https://github.com/cetijunior/LivingApp/assets/78642663/5dd341cc-194e-4c12-bee3-7ae15866c69f)
 
+![LogIn Android](https://github.com/cetijunior/LivingApp/assets/78642663/64cab45f-336f-40dc-82d3-7cc6f59c8c7d)
+
 
 
 [SignUp]
 
 ![SignUp IOS](https://github.com/cetijunior/LivingApp/assets/78642663/280ad5ff-98ec-454c-949d-7553a33f0e27)
+
+![SignUp Android](https://github.com/cetijunior/LivingApp/assets/78642663/c682fe5b-54d2-42c3-ab84-a273e6c428b7)
 
 
 
