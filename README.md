@@ -30,11 +30,15 @@ The App Layout
 
 ![CreateProfile IOS](https://github.com/cetijunior/LivingApp/assets/78642663/50621f77-cb2b-4ea6-89ad-c558aca750cd)
 
+![ProfileCreation Android](https://github.com/cetijunior/LivingApp/assets/78642663/0231bd51-d413-432e-8982-1eee852837c9)
+
 
 
 [MainMenu]
 
 ![MainMenu IOS](https://github.com/cetijunior/LivingApp/assets/78642663/b48181f7-e9eb-448f-bbc7-a677eb9e0398)
+
+![MainMenu Android](https://github.com/cetijunior/LivingApp/assets/78642663/9e6fc3e0-3bf7-4ca1-ad43-c3a678ebed46)
 
 
 
@@ -42,11 +46,15 @@ The App Layout
 
 ![Profile1 IOS](https://github.com/cetijunior/LivingApp/assets/78642663/54f20ed4-32b9-47f0-8413-4f53161baadd)
 
+![Profile1 Android](https://github.com/cetijunior/LivingApp/assets/78642663/cd51d044-2adb-4403-8eda-87d2324cedaa)
+
 
 
 [Profile2]
 
 ![Profile2 IOS](https://github.com/cetijunior/LivingApp/assets/78642663/1ad4be8d-142b-4063-8488-f2354f987bc6)
+
+![Profile2 Android](https://github.com/cetijunior/LivingApp/assets/78642663/3e1b6f43-2540-4d80-8dae-12e95eda447b)
 
 
 
@@ -54,11 +62,15 @@ The App Layout
 
 ![Map IOS](https://github.com/cetijunior/LivingApp/assets/78642663/f795d2bc-a606-4d54-a7f9-53a981b2ccdb)
 
+![Map Android](https://github.com/cetijunior/LivingApp/assets/78642663/0130b5ae-01fb-483b-8180-019c9518c2fa)
+
 
 
 [MissionsFull]
 
 ![MissionsFull IOS](https://github.com/cetijunior/LivingApp/assets/78642663/23654460-ae85-4719-9d86-81d8d24c3c9b)
+
+![MissionsFull Android](https://github.com/cetijunior/LivingApp/assets/78642663/3dd5824b-3c53-4552-9ab1-bf5fa43a7c5a)
 
 
 
@@ -66,11 +78,15 @@ The App Layout
 
 ![MissionsEmpty IOS](https://github.com/cetijunior/LivingApp/assets/78642663/cae981e1-ade7-4f76-b2fe-466b270c96d6)
 
+![MissionsEmpty Android](https://github.com/cetijunior/LivingApp/assets/78642663/9e0c327b-5977-4c81-9be4-862173b76264)
+
 
 
 [LogBoard]
 
 ![LogBoard IOS](https://github.com/cetijunior/LivingApp/assets/78642663/84caaeb0-910a-4bdb-8216-f9be31d8447a)
+
+![LogBoard Android](https://github.com/cetijunior/LivingApp/assets/78642663/6fc1fcde-ebda-4566-8c82-5eaf5572e40a)
 
 
 
@@ -79,6 +95,7 @@ The App Layout
 
 ![LeaderBoard IOS](https://github.com/cetijunior/LivingApp/assets/78642663/34a53449-ef6d-41da-95b5-f7131ffcdd0f)
 
+![LeaderBoard Android](https://github.com/cetijunior/LivingApp/assets/78642663/036e2155-5e54-44f0-9553-f1633299dfe6)
 
 
 
