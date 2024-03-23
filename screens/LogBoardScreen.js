@@ -16,31 +16,31 @@ const LogBoard = ({ navigation }) => {
     return (
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={tw`flex-1`}>
             <View style={tw`flex-1 items-center justify-between`}>
-                <View style={[tw`flex-row w-full justify-between items-center pt-10`]}>
-                    {/* Header */}
-                    <View style={tw`w-full`}>
-                        <View style={tw`flex-row justify-between items-center pt-8 px-3`}>
-                            <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={tw`items-start`}>
-                                <Text style={tw`text-lg text-[#5e9152]`}>Back</Text>
-                            </TouchableOpacity>
-                            <Text style={tw`text-4xl font-semibold text-black`}>LeaderBoard</Text>
-                            <TouchableOpacity style={tw`items-end`}>
-                                <Text style={tw`text-lg text-[#5e9152]`}>Filter</Text>
-                            </TouchableOpacity>
-                        </View>
+                {/* Header */}
+                <View style={[tw`w-full pt-15`]}>
+                    <View style={tw`flex-row justify-between items-center px-3`}>
+                        <TouchableOpacity onPress={() => navigation.goBack()} style={tw`items-start`}>
+                            <Text style={tw`text-lg text-[#5e9152]`}>Back</Text>
+                        </TouchableOpacity>
+                        <Text style={tw`text-4xl font-semibold text-black`}>LogBoard</Text>
+                        <TouchableOpacity style={tw`items-end`}>
+                            <Text style={tw`text-lg text-[#5e9152]`}>Filter</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
 
-                {/* Messages */}
-                <View style={tw`flex  w-full`}>
-                    <ScrollView style={tw`flex-grow p-4 w-full`}>
+                {/* Messages Board */}
+                <ScrollView style={tw`flex p-4 w-full`}>
+                    <View style={tw`flex-wrap flex-row justify-center`}>
                         {messages.map((message, index) => (
-                            <View key={index} style={tw`mb-4 p-4 bg-white rounded-lg shadow`}>
-                                <Text style={tw`text-gray-800`}>{message}</Text>
+                            <View key={index} style={tw`m-2 bg-yellow-200 rounded-lg shadow-md max-w-40 max-h-40`}>
+                                <ScrollView nestedScrollEnabled={true}>
+                                    <Text style={tw`text-gray-800 text-center p-2`}>{message}</Text>
+                                </ScrollView>
                             </View>
                         ))}
-                    </ScrollView>
-                </View>
+                    </View>
+                </ScrollView>
 
                 {/* New Message Input */}
                 <View style={tw`p-4 pb-8 w-full flex-row items-center bg-gray-100`}>

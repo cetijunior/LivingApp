@@ -27,9 +27,9 @@ const LeaderBord = ({ navigation }) => {
                     </View>
                 </View>
 
-                <View style={tw`flex-col h-100% items-center w-full`}>
+                <View style={tw`flex-col h-85% items-center w-full`}>
                     <View style={tw`flex-row items-center pb-4`}>
-                        <Image source={require('../assets/globe.png')} style={tw`h-10 w-10`} />
+                        <Image source={require('../assets/globe.png')} style={tw`h-8 w-8`} />
                         <Text style={tw`text-xl text-center font-bold pl-2`}>Biznesi</Text>
                     </View>
                     {/* Global Missions */}
@@ -74,6 +74,35 @@ const LeaderBord = ({ navigation }) => {
                                     <Text style={tw`text-base`}>18000 Points in Coffe Crush</Text>
                                 </View>
                             </TouchableOpacity>
+                            <TouchableOpacity style={tw`flex-row items-center mb-4 bg-white rounded-2xl p-4 shadow`}>
+                                <Image source={require('../assets/userImage.png')} style={tw`h-20 w-20 rounded-2xl`} />
+                                <View style={tw`flex-1 ml-4`}>
+                                    <Text style={tw`text-lg font-bold`}>Player</Text>
+                                    <Text style={tw`text-base`}>18000 Points in Coffe Crush</Text>
+                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={tw`flex-row items-center mb-4 bg-white rounded-2xl p-4 shadow`}>
+                                <Image source={require('../assets/userImage.png')} style={tw`h-20 w-20 rounded-2xl`} />
+                                <View style={tw`flex-1 ml-4`}>
+                                    <Text style={tw`text-lg font-bold`}>Player</Text>
+                                    <Text style={tw`text-base`}>18000 Points in Coffe Crush</Text>
+                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={tw`flex-row items-center mb-4 bg-white rounded-2xl p-4 shadow`}>
+                                <Image source={require('../assets/userImage.png')} style={tw`h-20 w-20 rounded-2xl`} />
+                                <View style={tw`flex-1 ml-4`}>
+                                    <Text style={tw`text-lg font-bold`}>Player</Text>
+                                    <Text style={tw`text-base`}>18000 Points in Coffe Crush</Text>
+                                </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={tw`flex-row items-center mb-4 bg-white rounded-2xl p-4 shadow`}>
+                                <Image source={require('../assets/userImage.png')} style={tw`h-20 w-20 rounded-2xl`} />
+                                <View style={tw`flex-1 ml-4`}>
+                                    <Text style={tw`text-lg font-bold`}>Player</Text>
+                                    <Text style={tw`text-base`}>18000 Points in Coffe Crush</Text>
+                                </View>
+                            </TouchableOpacity>
+
                         </View>
                     </ScrollView>
 

@@ -13,6 +13,8 @@ import MissionScreenEmpty from './screens/MissionScreenEmpty';
 import LeaderBoardScreen from './screens/LeaderBoardScreen';
 import LogBoardScreen from './screens/LogBoardScreen';
 import MapScreen from './screens/MapScreen';
+import QrScanner from './screens/QrScanner';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -48,6 +50,8 @@ const App = () => {
         <Stack.Screen name="LeaderBoard" component={LeaderBoardScreen} />
         <Stack.Screen name="LogBoard" component={LogBoardScreen} />
         <Stack.Screen name="Map" component={MapScreen} />
+        <Stack.Screen name="QrScanner" component={QrScanner} />
+
 
 
 

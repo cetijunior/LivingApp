@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Alert, Button, Dimensions } from 'react-native';
 import tw from 'twrnc';
 import { ProgressBar } from 'react-native-paper';
 import MapView from 'react-native-maps';
 
 
-
 const MainMenu = ({ navigation }) => {
+    const [responseCamera, setResponseCamera] = React.useState(null);
+    const [responseGallery, setResponseGallery] = React.useState(null);
 
     const progress = 0.744; // Example progress, calculate based on XP e.g., currentXP / requiredXP
-
-
     const screenWidth = Dimensions.get('window').width;
+
 
     return (
         <View style={tw`flex-1`} contentContainerStyle={tw`flex-1 justify-center items-center p-3`}>
@@ -106,14 +106,16 @@ const MainMenu = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
 
+
             <View style={[tw`flex-2 w-full mt-16 rounded-xl bg-gray-400 items-center justify-center`]}>
-                <TouchableOpacity style={[tw`rounded-xl items-center justify-end`]}>
+                <TouchableOpacity onPress={() => navigation.navigate('QrScanner')} style={[tw`rounded-xl items-center justify-end`]}>
                     <Image
                         source={require('../assets/qr.png')}
-                        style={tw`w-25 h-25 bg-white border-4 z-10 -mt-16 border-gray-400 rounded-full `} />
+                        style={tw`w-25 h-25 bg-white border-4 z-10 -mt-16 border-gray-400 rounded-full `}
+                    />
                 </TouchableOpacity>
             </View>
-        </View >
+        </View>
     );
 };
 

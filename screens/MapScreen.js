@@ -15,12 +15,12 @@ const MapScreen = ({ navigation }) => {
         <SafeAreaView style={tw`flex-1`}>
             <StatusBar barStyle={Platform.OS === 'ios' ? 'dark-content' : 'light-content'} />
 
-            <View style={tw`flex-row justify-between items-center p-4`}>
+            <View style={tw`flex-row justify-between items-center mt-5 p-4`}>
                 <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={tw`items-start`}>
                     <Text style={tw`text-lg text-[#5e9152]`}>Back</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={tw`items-center`}>
-                    <Text style={tw`text-4xl font-semibold text-black`}>Missions</Text>
+                    <Text style={tw`text-4xl font-semibold text-black`}>Map</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={tw`items-end`}>
                     <Text style={tw`text-lg text-[#5e9152]`}>Filter</Text>
