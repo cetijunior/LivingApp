@@ -8,12 +8,10 @@ function SignUpConfirm({ navigation, route }) {
 
     // Function to handle confirmation
     const handleConfirmation = () => {
-        // TODO: Here, you would send a request to your backend with the email and confirmation code
-        // For example: verifyConfirmationCode(email, confirmCode);
 
-        // After verification, you can navigate to the next screen or show an error message
         navigation.navigate('Login', { email: email, confirmCode: confirmCode });
-        console.log('Email: ', email, " ConfirmationCode:", confirmCode)
+        //console.log('Email: ', email, " ConfirmationCode:", confirmCode)
+        //Params: verifyConfirmationCode(email, confirmCode);
     };
 
     return (
@@ -22,7 +20,7 @@ function SignUpConfirm({ navigation, route }) {
             style={tw`flex-1`}
         >
             <ScrollView contentContainerStyle={tw`flex-1 justify-center p-4`}>
-                <Text style={tw`text-xl mb-4`}>Enter the confirmation code sent to your email</Text>
+                <Text style={tw`text-xl mb-4`}>Enter the confirmation code that was sent to your email</Text>
                 <TextInput
                     style={tw`border-2 p-3 rounded-lg mb-4`}
                     placeholder="Confirmation Code"
