@@ -5,6 +5,7 @@ import { useFonts } from 'expo-font';
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
+import SignUpConfirm from './screens/SignUpConfirm';
 import ProfileCreationScreen from './screens/ProfileCreationScreen';
 import MainMenuScreen from './screens/MainMenuScreen';
 import ProfileScreen from './screens/ProfileScreen';
@@ -42,6 +43,7 @@ const App = () => {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
+        <Stack.Screen name="SignUpConfirm" component={SignUpConfirm} />
         <Stack.Screen name="ProfileCreation" component={ProfileCreationScreen} />
         <Stack.Screen name="MainMenu" component={MainMenuScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />

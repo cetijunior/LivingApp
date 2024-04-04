@@ -4,10 +4,15 @@ import tw from 'twrnc';
 import { useFonts } from 'expo-font';
 
 
-const SignUpScreen = ({ navigation }) => {
+const LoginScreen = ({ navigation, route }) => {
 
     const [isEmailFocused, setIsEmailFocused] = useState(false);
     const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+
+    const [email, setEmail] = useState(route.params?.email || '');
+    const [password, setPassword] = useState('');
+
+
 
     const emailInputStyle = tw.style(`border-2 w-full px-3 py-4 rounded-xl mb-4`, {
         'border-[#15631b83]': !isEmailFocused,
@@ -26,6 +31,8 @@ const SignUpScreen = ({ navigation }) => {
         'zeyada': require('../assets/fonts/zeyada.ttf'),
     });
 
+
+    console.log('Email: ', email,)
 
     return (
         <KeyboardAvoidingView
@@ -48,18 +55,18 @@ const SignUpScreen = ({ navigation }) => {
                     <View style={tw`items-center`}>
                         <TextInput
                             style={emailInputStyle}
-                            placeholder="exmale@email.com"
-                            value={null}
-
+                            placeholder="example@email.com"
+                            value={email}
+                            onChangeText={setEmail}
                             onFocus={() => setIsEmailFocused(true)}
                             onBlur={() => setIsEmailFocused(false)}
                         />
                         <TextInput
                             style={passwordInputStyle}
-                            placeholder="password"
+                            placeholder="Password"
                             secureTextEntry={true}
-                            value={null}
-
+                            value={password}
+                            onChangeText={setPassword}
                             onFocus={() => setIsPasswordFocused(true)}
                             onBlur={() => setIsPasswordFocused(false)}
                         />
@@ -77,7 +84,7 @@ const SignUpScreen = ({ navigation }) => {
                     <View style={tw` items-center `}>
                         <TouchableOpacity
                             style={tw`flex w-50% bg-[#07770b] py-3 rounded-xl items-center mt-5`}
-                            onPress={() => navigation.navigate('MainMenu')}>
+                            onPress={() => navigation.navigate('ProfileCreation')}>
                             <Text style={[tw`text-white text-xl`, { fontFamily: 'risque' }]}>
                                 Login!
                             </Text>
@@ -125,4 +132,4 @@ const SignUpScreen = ({ navigation }) => {
     );
 };
 
-export default SignUpScreen;
+export default LoginScreen;

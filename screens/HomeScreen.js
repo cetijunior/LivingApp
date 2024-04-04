@@ -35,6 +35,9 @@ const HomeScreen = ({ navigation }) => {
                             onPress={() => navigation.navigate('Login')}>
                             <Text style={[tw`text-white text-xl`, { fontFamily: 'risque' }]}>
                                 Log In!
+
+                                {/*Login Functionality*/}
+
                             </Text>
                         </TouchableOpacity>
 
@@ -43,6 +46,10 @@ const HomeScreen = ({ navigation }) => {
                             onPress={() => navigation.navigate('SignUp')}>
                             <Text style={[tw`text-white text-xl`, { fontFamily: 'risque' }]}>
                                 Create Account
+
+                                {/*Login Functionality*/}
+
+
                             </Text>
                         </TouchableOpacity>
                     </View>
