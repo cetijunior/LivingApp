@@ -83,7 +83,7 @@ const SignUpScreen = ({ navigation }) => {
 
                     <TouchableOpacity
                         style={tw`flex w-50% bg-[#07770b] py-3 rounded-xl items-center mt-5`}
-                        onPress={() => navigation.navigate('SignUpConfirm', { email: email })}>
+                        onPress={() => navigation.navigate('SignUpConfirm', { email: email, password: password })}>
                         <Text style={[tw`text-white text-xl`, { fontFamily: 'risque' }]}>
                             Sign Up
                         </Text>

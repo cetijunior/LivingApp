@@ -1,9 +1,12 @@
 import { View, Text, Image, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform, } from 'react-native';
-import React, { useState, Component } from 'react'
+import React from 'react'
 import tw from 'twrnc'
-import { TextInput } from 'react-native-paper';
 
-const MissionScreenEmpty = ({ navigation }) => {
+const MissionScreenEmpty = ({ navigation, route }) => {
+    const userName = route.params?.userName;
+    const imageUri = route.params?.imageUri;
+
+
     return (
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "margin" : "height"} style={tw`flex-1`}>
             <View style={tw`flex-col items-center`}>
@@ -13,7 +16,7 @@ const MissionScreenEmpty = ({ navigation }) => {
 
 
                         <View style={tw`flex-row justify-between items-center py-4 w-full`}>
-                            <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={tw`items-start`}>
+                            <TouchableOpacity onPress={() => navigation.navigate('MainMenu', { userName: userName, imageUri: imageUri })} style={tw`items-start`}>
                                 <Text style={tw`text-lg text-[#5e9152]`}>Back</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={tw`items-center`}>

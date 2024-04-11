@@ -84,7 +84,7 @@ const LoginScreen = ({ navigation, route }) => {
                     <View style={tw` items-center `}>
                         <TouchableOpacity
                             style={tw`flex w-50% bg-[#07770b] py-3 rounded-xl items-center mt-5`}
-                            onPress={() => navigation.navigate('ProfileCreation')}>
+                            onPress={() => navigation.navigate('ProfileCreation', { email: email, password: password })}>
                             <Text style={[tw`text-white text-xl`, { fontFamily: 'risque' }]}>
                                 Login!
                             </Text>

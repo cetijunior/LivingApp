@@ -10,7 +10,7 @@ function SignUpConfirm({ navigation, route }) {
     const handleConfirmation = () => {
 
         navigation.navigate('Login', { email: email, confirmCode: confirmCode });
-        //console.log('Email: ', email, " ConfirmationCode:", confirmCode)
+        console.log('Email: ', email, " ConfirmationCode:", confirmCode)
         //Params: verifyConfirmationCode(email, confirmCode);
     };
 

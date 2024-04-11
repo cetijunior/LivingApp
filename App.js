@@ -1,4 +1,6 @@
 import React from 'react';
+import AppLoading from 'expo-splash-screen';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts } from 'expo-font';
@@ -22,12 +24,16 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
 
-  const [] = useFonts({
+  const [fontsLoaded] = useFonts({
     'PalatinoLinotype': require('./assets/fonts/PalatinoLinotype.ttf'),
     'risque': require('./assets/fonts/risque.ttf'),
     'rochester': require('./assets/fonts/rochester.ttf'),
     'zeyada': require('./assets/fonts/zeyada.ttf'),
   });
+
+  if (!fontsLoaded) {
+    return <AppLoading />; // Show a loading indicator or splash screen
+  }
 
 
   return (

@@ -1,14 +1,64 @@
-import { View, Text, Image, TouchableOpacity, KeyboardAvoidingView, Platform, } from 'react-native';
+import { View, Text, Alert, Image, TouchableOpacity, KeyboardAvoidingView, Platform, } from 'react-native';
 import React, { useState, Component } from 'react'
+import * as ImagePicker from 'expo-image-picker';
 import tw from 'twrnc'
 import { TextInput } from 'react-native-paper';
 
-const ProfileScreen = ({ navigation }) => {
+const ProfileScreen = ({ navigation, route }) => {
+    const [userName, setUserName] = useState(route.params?.userName || '');
+    const [imageUri, setImageUri] = useState(route.params?.imageUri || '');
+    //changeable name and image
+    const birthday = route.params?.birthday;
 
     const [text, setText] = useState('');
+    const [shortBio, setShortBio] = useState('Short Bio');
     const placeholderText = '*You have not advanced enough in your adventure'
-
+    const [inputEnabled, setInputEnabled] = useState(false);
     const [activeButton, setActiveButton] = useState('stats');
+
+
+    const pickImage = async () => {
+        const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (permissionResult.granted !== true) {
+            alert('You need to allow access to your photos!');
+            return;
+        }
+
+        const result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1,
+        });
+
+        console.log(result); // Log the entire result object
+
+        if (!result.cancelled && result.assets && result.assets.length > 0) {
+            const uri = result.assets[0].uri;  // Access the URI from the first asset
+            setImageUri(uri);
+        } else {
+            console.log("No image picked or operation cancelled.");
+        }
+    }
+
+    const confirmLogout = () => {
+        Alert.alert(
+            'Confirm Logout', // Title of the alert
+            'Are you sure you want to log out?', // Message of the alert
+            [
+                {
+                    text: 'Cancel',
+                    onPress: () => console.log('Logout canceled'), // No action taken
+                    style: 'cancel',
+                },
+                {
+                    text: 'Yes',
+                    onPress: () => navigation.navigate('Home', { userName: null, imageUri: null, birthday: null }), // Navigates to Home and resets parameters
+                },
+            ],
+            { cancelable: false } // Prevent the user from tapping outside the dialog to dismiss it
+        );
+    };
 
     return (
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "margin" : "height"} style={tw`flex-1`}>
@@ -16,29 +66,30 @@ const ProfileScreen = ({ navigation }) => {
                 {/* Section 1 - Top*/}
                 <View style={[tw`w-full py-4 px-3 rounded-b-3xl flex-col items-center`]}>
                     <View style={tw`flex-row justify-between items-center py-4 w-full`}>
-                        <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={tw`items-start`}>
+                        <TouchableOpacity onPress={() => navigation.navigate('MainMenu', { userName: userName, imageUri: imageUri, birthday: birthday })} style={tw`items-start`}>
                             <Text style={tw`text-lg text-white`}>Back</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={tw`items-center`}>
                             <Text style={tw`text-3xl font-bold text-white`}>Profile</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={tw`items-end`}>
+                        <TouchableOpacity style={tw`items-end`}
+                            onPress={confirmLogout}>
                             <Text style={tw`text-lg text-white`}>Logout</Text>
                         </TouchableOpacity>
                     </View>
 
                     <View>
-                        <TouchableOpacity style={tw`pt-10 items-center`}>
+                        <TouchableOpacity onPress={pickImage} style={tw`pt-10 items-center`}>
                             <Image
                                 style={tw`h-35 w-35 border-4 border-[#fff] rounded-full items-center justify-center`}
-                                source={require('../assets/profileImage.png')}
+                                source={imageUri ? { uri: imageUri } : require('../assets/profileImage.png')}
                             />
                         </TouchableOpacity>
                     </View>
 
                     <View style={tw`flex-col justify-between items-center pt-3 w-full`}>
-                        <Text style={tw`text-3xl font-bold text-black`}>Username</Text>
-                        <Text style={tw`text-lg pt-1 text-black`}>Short Bio</Text>
+                        <Text style={tw`text-3xl font-bold text-black`}>{userName}</Text>
+                        <Text style={tw`text-lg pt-1 text-black`}>{shortBio}</Text>
                     </View>
 
                     <View style={tw`flex-col w-full justify-center items-start pt-5 px-4`}>
@@ -58,7 +109,8 @@ const ProfileScreen = ({ navigation }) => {
                                 style={tw`bg-white h-30 w-full rounded-2xl`}
                                 onChangeText={setText}
                                 value={text}
-                                placeholder="" // Keeping this empty since we're using a custom placeholder approach
+                                editable={inputEnabled}  // Control the editability dynamically
+                                placeholder=""
                             />
                         </View>
 
@@ -149,7 +201,7 @@ const ProfileScreen = ({ navigation }) => {
                     </View>
                 </View>
             </View>
-        </KeyboardAvoidingView>
+        </KeyboardAvoidingView >
     )
 }
 

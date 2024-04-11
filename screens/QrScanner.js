@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, TouchableOpacity, Button } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import { CameraView, Camera } from "expo-camera/next";
 import tw from 'twrnc'
 
-export default function App({ navigation }) {
+export default function App({ navigation, route }) {
     const [hasPermission, setHasPermission] = useState(null);
     const [scanned, setScanned] = useState(false);
+
+    const userName = route.params?.userName;
+    const imageUri = route.params?.imageUri;
 
     useEffect(() => {
         const getCameraPermissions = async () => {
@@ -16,10 +19,29 @@ export default function App({ navigation }) {
         getCameraPermissions();
     }, []);
 
+
     const handleBarCodeScanned = ({ type, data }) => {
         setScanned(true);
-        alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-        console.log(`Bar code with type ${type} and data ${data} has been scanned!`);
+        const qrData = parseQRData(data);
+        if (qrData.latitude && qrData.longitude) {
+            navigation.navigate('LogBoard', { latitude: qrData.latitude, longitude: qrData.longitude, userName: userName, imageUri: imageUri });
+            console.log(data);
+        } else {
+            alert("Invalid QR code data.");
+            console.log("Invalid QR code data:", data);
+        }
+    };
+
+    const parseQRData = (data) => {
+        const regex = /Latitude: (.*), Longitude: (.*)/;
+        const matches = data.match(regex);
+        if (matches && matches.length === 3) {
+            return {
+                latitude: parseFloat(matches[1]),
+                longitude: parseFloat(matches[2])
+            };
+        }
+        return {};
     };
 
     if (hasPermission === null) {
@@ -35,7 +57,7 @@ export default function App({ navigation }) {
             <View style={[tw`w-full pt-15 px-3 rounded-b-3xl flex-col items-center`]}>
 
                 <View style={tw`flex-row justify-between items-center py-4 w-full`}>
-                    <TouchableOpacity onPress={() => navigation.navigate('MainMenu')} style={tw`items-start`}>
+                    <TouchableOpacity onPress={() => navigation.navigate('MainMenu', { userName: userName, imageUri: imageUri, latitude: qrData.latitude, longitude: qrData.longitude })} style={tw`items-start`}>
                         <Text style={tw`text-lg text-[#5e9152]`}>Back</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={tw`items-center`}>

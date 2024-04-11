@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, Switch, TouchableOpacity, Image, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import tw from 'twrnc';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -6,7 +6,7 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Notifications from 'expo-notifications';
 
 const ProfileCreationScreen = ({ navigation }) => {
-    const [imageUri, setImageUri] = useState(null);
+    const [imageUri, setImageUri] = useState('');
     const [userName, setUserName] = useState('');
 
     const [agreeWithTerms, setAgreeWithTerms] = useState(false);
@@ -45,14 +45,12 @@ const ProfileCreationScreen = ({ navigation }) => {
     };
 
     const pickImage = async () => {
-        // Request permissions
         const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
-        if (permissionResult.granted === false) {
-            alert('You have refused to allow this app to access your photos!');
+        if (permissionResult.granted !== true) {
+            alert('You need to allow access to your photos!');
             return;
         }
 
-        // Launching the image library
         const result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
             allowsEditing: true,
@@ -60,20 +58,22 @@ const ProfileCreationScreen = ({ navigation }) => {
             quality: 1,
         });
 
-        if (!result.canceled) {
-            setImageUri(result.uri);
+        console.log(result); // Log the entire result object
+
+        if (!result.cancelled && result.assets && result.assets.length > 0) {
+            const uri = result.assets[0].uri;  // Access the URI from the first asset
+            setImageUri(uri);
+        } else {
+            console.log("No image picked or operation cancelled.");
         }
-    };
+    }
+
+    useEffect(() => {
+        console.log('Image URI updated:', imageUri);
+    }, [imageUri]);
 
     const finishProfileCreation = () => {
-        console.log({
-            userName,
-            birthday,
-            agreeWithTerms,
-            allowNotifications,
-            imageUri,
-        });
-        navigation.navigate('MainMenu', { userName: 'YourUserName', imageUri: 'YourImageUri' });
+        navigation.navigate('MainMenu', { userName: userName, imageUri: imageUri, birthday: birthday, agreeWithTerms: agreeWithTerms, allowNotifications: allowNotifications });
     };
 
     return (

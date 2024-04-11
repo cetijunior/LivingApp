@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Image } from 'react-native';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import tw from 'twrnc';
 
-const LogBoard = ({ navigation }) => {
+const LogBoard = ({ navigation, route }) => {
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
 
@@ -13,13 +14,30 @@ const LogBoard = ({ navigation }) => {
         }
     };
 
+
+    const { latitude, longitude, userName, imageUri } = route.params || {};
+
+    if (!latitude || !longitude) {
+        return (
+            <View style={tw`flex-1 items-center justify-center`}>
+                <Text style={tw`text-xl mb-4`}>No location data found.</Text>
+                <TouchableOpacity
+                    onPress={() => navigation.navigate('QrScanner', { userName: userName, imageUri: imageUri })}
+                    style={tw`bg-blue-500 px-5 py-2 rounded-lg`}
+                >
+                    <Text style={tw`text-white text-lg`}>Scan QR Code</Text>
+                </TouchableOpacity>
+            </View>
+        );
+    }
+
     return (
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={tw`flex-1`}>
             <View style={tw`flex-1 items-center justify-between`}>
                 {/* Header */}
                 <View style={[tw`w-full pt-15`]}>
                     <View style={tw`flex-row justify-between items-center px-3`}>
-                        <TouchableOpacity onPress={() => navigation.goBack()} style={tw`items-start`}>
+                        <TouchableOpacity onPress={() => navigation.navigate('MainMenu', { userName, imageUri, latitude, longitude })} style={tw`items-start`}>
                             <Text style={tw`text-lg text-[#5e9152]`}>Back</Text>
                         </TouchableOpacity>
                         <Text style={tw`text-4xl font-semibold text-black`}>LogBoard</Text>
