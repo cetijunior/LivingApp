@@ -16,11 +16,9 @@ The App Layout:
 
 - [MainMenu]
 
-- [Profile1]
+- [ProfileScreen]
 
-- [Profile2]
-
-- [Map]
+- [MapScreen]
 
 - [MissionsFull]
 
